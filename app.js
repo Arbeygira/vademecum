@@ -410,6 +410,10 @@ for (const button of document.querySelectorAll(".menu-button[data-view]")) {
     }
     if (dialog.open) dialog.close();
     setView(button.dataset.view);
+    if (button.dataset.view === "search") {
+      searchInput.scrollIntoView({ behavior: "smooth", block: "center" });
+      searchInput.focus({ preventScroll: true });
+    }
   });
 }
 document.querySelector("#close-dialog").addEventListener("click", () => {
