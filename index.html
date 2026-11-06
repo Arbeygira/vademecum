@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f4">
+    <meta name="description" content="Busca medicamentos por nombre y grupo farmacológico, consulta o edita fichas farmacológicas.">
+    <title>Vademécum | Medicamentos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="medicamentos.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Vademécum, inicio">
+        <span class="brand-mark" aria-hidden="true">+</span>
+        <span>vademécum<span class="brand-period">.</span></span>
+      </a>
+      <nav class="main-menu" aria-label="Secciones principales">
+        <button class="menu-button active" type="button" data-view="search" aria-current="page">Buscar</button>
+        <button class="menu-button" type="button" data-view="add">Agregar</button>
+        <button class="menu-button" type="button" data-view="edit">Editar</button>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <section class="workspace" aria-label="Medicamentos">
+        <div class="page-heading">
+          <p class="eyebrow">Consulta farmacológica</p>
+          <h1 id="page-title">Vademécum</h1>
+          <p id="page-description">Encuentra medicamentos por nombre o grupo farmacológico.</p>
+        </div>
+        <div class="source-notice">
+          Información de consulta: verifica siempre las dosis y demás datos con referencias clínicas vigentes y protocolos institucionales.
+        </div>
+        <div class="toolbar">
+          <label class="search-box">
+            <span class="search-icon" aria-hidden="true"></span>
+            <span class="sr-only">Buscar medicamentos</span>
+            <input id="search-input" type="search" placeholder="Buscar por nombre, grupo, indicación..." autocomplete="off">
+            <kbd>Ctrl K</kbd>
+          </label>
+          <label class="group-filter">
+            <span class="sr-only">Filtrar por grupo farmacológico</span>
+            <select id="group-filter">
+              <option value="">Todos los grupos</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="list-heading">
+          <div>
+            <p class="eyebrow" id="list-eyebrow">Consulta</p>
+            <h2 id="list-title">Medicamentos</h2>
+          </div>
+          <span id="result-count" class="result-count">0 fichas</span>
+        </div>
+
+        <div id="medicine-list" class="medicine-list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <dialog id="medicine-dialog" class="medicine-dialog" aria-labelledby="dialog-title">
+      <form id="medicine-form" novalidate>
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">Ficha farmacológica</p>
+            <h2 id="dialog-title">Agregar medicamento</h2>
+          </div>
+          <button class="icon-button" id="close-dialog" type="button" aria-label="Cerrar formulario">×</button>
+        </div>
+
+        <div class="form-content">
+          <div class="identity-fields">
+            <div class="photo-field">
+              <label class="field-label" for="photo-input">Foto del medicamento</label>
+              <label class="photo-upload" for="photo-input">
+                <img id="photo-preview" alt="" hidden>
+                <span id="photo-placeholder" class="photo-placeholder">
+                  <span class="upload-icon" aria-hidden="true">↑</span>
+                  <span>Subir foto</span>
+                  <small>JPG, PNG o WebP · máx. 2 MB</small>
+                </span>
+              </label>
+              <input id="photo-input" type="file" accept="image/jpeg,image/png,image/webp" class="sr-only">
+              <button id="remove-photo" class="text-button" type="button" hidden>Quitar foto</button>
+              <p id="photo-error" class="field-error" role="alert"></p>
+            </div>
+            <div class="name-fields">
+              <label class="field">
+                <span class="field-label">Nombre genérico <span class="required">*</span></span>
+                <input name="genericName" required maxlength="120" placeholder="Ej. principio activo">
+              </label>
+              <label class="field">
+                <span class="field-label">Nombre comercial</span>
+                <input name="brandName" maxlength="240" placeholder="Marca(s) comercial(es)">
+              </label>
+              <label class="field">
+                <span class="field-label">Grupo farmacológico <span class="required">*</span></span>
+                <input name="pharmacologicalGroup" list="group-options" required maxlength="160" placeholder="Selecciona o escribe un grupo">
+                <datalist id="group-options"></datalist>
+              </label>
+              <label class="field">
+                <span class="field-label">Presentación</span>
+                <input name="presentation" maxlength="240" placeholder="Concentración, forma farmacéutica, envase">
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Información farmacológica</h3>
+            <label class="field">
+              <span class="field-label">Mecanismo de acción</span>
+              <textarea name="mechanism" rows="3" maxlength="3000" placeholder="Describe cómo actúa el medicamento..."></textarea>
+            </label>
+            <label class="field">
+              <span class="field-label">Indicaciones</span>
+              <textarea name="indications" rows="3" maxlength="3000" placeholder="¿Para qué se utiliza?"></textarea>
+            </label>
+          </div>
+
+          <div class="form-section">
+            <h3>Administración y cuidados</h3>
+            <div class="field-grid">
+              <label class="field">
+                <span class="field-label">Dosis en adultos</span>
+                <textarea name="adultDose" rows="3" maxlength="2000" placeholder="Registrar pauta y fuente de referencia..."></textarea>
+              </label>
+              <label class="field">
+                <span class="field-label">Dosis pediátrica</span>
+                <textarea name="pediatricDose" rows="3" maxlength="2000" placeholder="Registrar pauta por edad/peso y fuente..."></textarea>
+              </label>
+            </div>
+            <label class="field">
+              <span class="field-label">Cuidados de enfermería</span>
+              <textarea name="nursingCare" rows="3" maxlength="3000" placeholder="Valoraciones, administración y monitorización..."></textarea>
+            </label>
+          </div>
+
+          <div class="form-section">
+            <h3>Seguridad</h3>
+            <div class="field-grid">
+              <label class="field">
+                <span class="field-label">Efectos secundarios</span>
+                <textarea name="sideEffects" rows="3" maxlength="3000" placeholder="Efectos secundarios conocidos..."></textarea>
+              </label>
+              <label class="field">
+                <span class="field-label">RAM <span class="field-hint">Reacciones adversas medicamentosas</span></span>
+                <textarea name="adverseReactions" rows="3" maxlength="3000" placeholder="Reacciones adversas y señales de alarma..."></textarea>
+              </label>
+            </div>
+          </div>
+          <p id="form-error" class="form-error" role="alert"></p>
+        </div>
+
+        <div class="dialog-footer">
+          <button class="button button-quiet" id="cancel-button" type="button">Cancelar</button>
+          <button class="button button-primary" type="submit">Guardar ficha</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="detail-title">
+      <div id="detail-content"></div>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
