@@ -430,3 +430,30 @@ body {
   .topbar { height: auto; min-height: 76px; padding-top: 10px; padding-bottom: 10px; flex-wrap: wrap; gap: 10px; }
   .main-menu { flex-wrap: wrap; align-self: auto; }
 }
+
+html.splash-active { overflow: hidden; }
+.splash-active body > :not(.splash) { visibility: hidden; }
+.splash { display: none; }
+.splash-active .splash {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: radial-gradient(circle at 50% 20%, #e1f7ee, transparent 55%), #eef6fb;
+}
+.splash-content { width: min(320px, 100%); text-align: center; }
+.splash-logo { display: block; width: 110px; height: 110px; margin: 0 auto 18px; border-radius: 30px; box-shadow: var(--shadow); }
+.splash-name { margin: 0; color: #172521; font-size: 32px; font-weight: 800; letter-spacing: -1px; }
+.splash-name span { color: var(--green); }
+.splash-author { margin: 4px 0 34px; color: #4a6058; font-size: 13px; font-weight: 600; }
+.splash-message { margin: 0 0 16px; color: #36534a; font-size: 14px; }
+.splash-medicines { display: flex; justify-content: space-around; align-items: end; margin: 0 12px 8px; }
+.splash-medicines svg { width: 38px; height: 30px; }
+.splash-track { height: 12px; overflow: hidden; border-radius: 999px; background: #d7e8e1; }
+.splash-fill { width: 100%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #6c4cf1, #0f9d77); transform-origin: left; animation: splash-progress 4s linear both; }
+@keyframes splash-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .splash-fill { animation: none; transform: scaleX(.5); }
+}
