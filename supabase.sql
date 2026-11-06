@@ -13,14 +13,20 @@ create table if not exists public.medicamentos (
   side_effects text not null default '',
   adverse_reactions text not null default '',
   photo text not null default '',
+  visible boolean not null default true,
   updated_at timestamptz not null default now()
 );
 
+alter table public.medicamentos
+  add column if not exists visible boolean not null default true;
+
 alter table public.medicamentos enable row level security;
 
--- Acceso abierto con la clave publicable (sin inicio de sesión).
--- Para restringir la edición, reemplaza estas políticas por otras con auth.
-create policy "leer medicamentos" on public.medicamentos for select using (true);
+-- Los visitantes solo leen medicamentos visibles; usuarios autenticados también ven los ocultos.
+drop policy if exists "leer medicamentos" on public.medicamentos;
+create policy "leer medicamentos" on public.medicamentos for select to anon, authenticated
+  using (visible or (select auth.uid()) is not null);
+-- Acceso abierto para modificar con la clave publicable.
 create policy "agregar medicamentos" on public.medicamentos for insert with check (true);
 create policy "editar medicamentos" on public.medicamentos for update using (true) with check (true);
 create policy "eliminar medicamentos" on public.medicamentos for delete using (true);

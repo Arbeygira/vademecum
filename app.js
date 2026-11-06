@@ -112,6 +112,7 @@ const FIELD_MAP = {
   sideEffects: "side_effects",
   adverseReactions: "adverse_reactions",
   photo: "photo",
+  visible: "visible",
   updatedAt: "updated_at",
 };
 let remoteActive = false;
@@ -120,6 +121,7 @@ let session = null;
 let refreshPromise = null;
 let saveInProgress = false;
 let deleteInProgress = false;
+let visibilityInProgress = false;
 
 function loadSession() {
   try {
@@ -184,11 +186,17 @@ function updateAuthUi() {
 }
 
 function toRow(medicine) {
-  return Object.fromEntries(Object.entries(FIELD_MAP).map(([key, column]) => [column, medicine[key] || (key === "updatedAt" ? new Date().toISOString() : "")]));
+  return Object.fromEntries(Object.entries(FIELD_MAP).map(([key, column]) => [
+    column,
+    medicine[key] ?? (key === "updatedAt" ? new Date().toISOString() : key === "visible" ? true : ""),
+  ]));
 }
 
 function fromRow(row) {
-  return Object.fromEntries(Object.entries(FIELD_MAP).map(([key, column]) => [key, row[column] ?? ""]));
+  return Object.fromEntries(Object.entries(FIELD_MAP).map(([key, column]) => [
+    key,
+    key === "visible" ? row[column] !== false : row[column] ?? "",
+  ]));
 }
 
 async function remoteRequest(path, options = {}, requireAuth = false) {
@@ -235,7 +243,10 @@ function render() {
   const query = searchInput.value.trim().toLocaleLowerCase("es");
   const selectedGroup = groupFilter.value;
   const editingMode = activeView === "edit";
-  const filtered = medicines.filter((medicine) => {
+  const availableMedicines = medicines.filter((medicine) =>
+    medicine.visible !== false || (isAuthed() && editingMode),
+  );
+  const filtered = availableMedicines.filter((medicine) => {
     const searchable = [
       medicine.genericName, medicine.brandName,
       medicine.pharmacologicalGroup, medicine.presentation,
@@ -246,7 +257,7 @@ function render() {
     return searchable.includes(query) && (!selectedGroup || medicine.pharmacologicalGroup === selectedGroup);
   });
 
-  const groups = [...new Set(medicines.map((medicine) => medicine.pharmacologicalGroup).filter(Boolean))]
+  const groups = [...new Set(availableMedicines.map((medicine) => medicine.pharmacologicalGroup).filter(Boolean))]
     .sort((left, right) => left.localeCompare(right, "es"));
   const currentGroup = groupFilter.value;
   document.querySelector("#group-options").innerHTML = groups
@@ -282,9 +293,10 @@ function render() {
     const tags = [
       medicine.pharmacologicalGroup ? `<span class="tag tag-group">${escapeHtml(medicine.pharmacologicalGroup)}</span>` : "",
       medicine.presentation ? `<span class="tag">${escapeHtml(medicine.presentation)}</span>` : "",
+      medicine.visible === false ? '<span class="tag tag-hidden">Oculto</span>' : "",
     ].filter(Boolean).join("");
     return `
-      <article class="medicine-card">
+      <article class="medicine-card${medicine.visible === false ? " medicine-card-hidden" : ""}">
         <div class="medicine-thumb">${image}</div>
         <div class="medicine-info">
           <h3>${escapeHtml(medicine.genericName)}</h3>
@@ -294,6 +306,7 @@ function render() {
         <div class="card-actions">
           <button class="icon-button" type="button" data-action="view" data-id="${escapeHtml(medicine.id)}" aria-label="Ver ${escapeHtml(medicine.genericName)}" title="Ver ficha">↗</button>
           ${editingMode ? `<button class="icon-button" type="button" data-action="edit" data-id="${escapeHtml(medicine.id)}" aria-label="Editar ${escapeHtml(medicine.genericName)}" title="Editar">✎</button>
+          <button class="icon-button visibility-button" type="button" data-action="toggle-visibility" data-id="${escapeHtml(medicine.id)}" aria-label="${medicine.visible === false ? "Mostrar" : "Ocultar"} ${escapeHtml(medicine.genericName)}" title="${medicine.visible === false ? "Mostrar en el catálogo" : "Ocultar del catálogo"}">${medicine.visible === false ? "◌" : "◉"}</button>
           <button class="icon-button delete-button" type="button" data-action="delete" data-id="${escapeHtml(medicine.id)}" aria-label="Eliminar ${escapeHtml(medicine.genericName)}" title="Eliminar">×</button>` : ""}
         </div>
       </article>`;
@@ -499,6 +512,7 @@ form.addEventListener("submit", async (event) => {
     sideEffects: String(data.sideEffects ?? "").trim(),
     adverseReactions: String(data.adverseReactions ?? "").trim(),
     photo: photoData,
+    visible: editingId ? medicines.find((item) => item.id === editingId)?.visible !== false : true,
     updatedAt: new Date().toISOString(),
   };
   const wasEditing = Boolean(editingId);
@@ -537,6 +551,37 @@ list.addEventListener("click", async (event) => {
   if (!medicine) return;
   if (button.dataset.action === "view") showDetails(medicine);
   if (button.dataset.action === "edit") openForm(medicine, activeView);
+  if (button.dataset.action === "toggle-visibility" && isAuthed()) {
+    if (visibilityInProgress) return;
+    if (!remoteActive) {
+      showToast("No hay conexión con la base de datos. Recarga la página y vuelve a intentarlo.", true);
+      return;
+    }
+    const visible = medicine.visible === false;
+    visibilityInProgress = true;
+    button.disabled = true;
+    try {
+      const rows = await remoteRequest(`?id=eq.${encodeURIComponent(medicine.id)}`, {
+        method: "PATCH",
+        headers: { Prefer: "return=representation" },
+        body: JSON.stringify({ visible, updated_at: new Date().toISOString() }),
+      }, true);
+      if (!Array.isArray(rows) || rows.length !== 1 || rows[0].id !== medicine.id || rows[0].visible !== visible) {
+        throw new Error("La base de datos no confirmó el cambio de visibilidad.");
+      }
+      const updatedMedicine = fromRow(rows[0]);
+      medicines = medicines.map((item) => item.id === medicine.id ? updatedMedicine : item);
+      render();
+      showToast(visible ? "Medicamento visible en el catálogo." : "Medicamento ocultado del catálogo.");
+    } catch (error) {
+      console.error("No se pudo cambiar la visibilidad del medicamento:", error);
+      showToast("No se pudo confirmar el cambio. Revisa tu conexión y sesión.", true);
+    } finally {
+      visibilityInProgress = false;
+      button.disabled = false;
+    }
+    return;
+  }
   if (button.dataset.action === "delete" && isAuthed()) {
     if (deleteInProgress) return;
     const confirmed = window.confirm(`¿Eliminar la ficha de ${medicine.genericName}? Esta acción no se puede deshacer.`);
@@ -587,7 +632,7 @@ const loginForm = document.querySelector("#login-form");
 const loginError = document.querySelector("#login-error");
 
 document.querySelector("#auth-button").addEventListener("click", () => {
-  if (saveInProgress || deleteInProgress) return;
+  if (saveInProgress || deleteInProgress || visibilityInProgress) return;
   if (isAuthed()) {
     storeSession(null);
     if (dialog.open) dialog.close();
