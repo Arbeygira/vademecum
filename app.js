@@ -95,23 +95,6 @@ function cleanMedicine(medicine) {
   return clean;
 }
 
-function saveMedicines(nextMedicines, nextDeletedCatalogIds = deletedCatalogIds) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({
-      version: 2,
-      medicines: nextMedicines.map(cleanMedicine),
-      deletedCatalogIds: [...nextDeletedCatalogIds],
-    }));
-    medicines = nextMedicines;
-    deletedCatalogIds = nextDeletedCatalogIds;
-    return true;
-  } catch (error) {
-    console.error("No se pudo guardar el vademécum:", error);
-    showToast("No se pudo guardar. El almacenamiento del navegador puede estar lleno.", true);
-    return false;
-  }
-}
-
 const SUPABASE_URL = "https://brtnrhhbhvgbvdhxwdxk.supabase.co";
 const SUPABASE_KEY = "sb_publishable_lbNZmDP6xsFYmmVUCcGGjg_Xxkvtlhg";
 const REMOTE_TABLE = `${SUPABASE_URL}/rest/v1/medicamentos`;
@@ -134,6 +117,9 @@ const FIELD_MAP = {
 let remoteActive = false;
 const SESSION_KEY = "vademecum.session.v1";
 let session = null;
+let refreshPromise = null;
+let saveInProgress = false;
+let deleteInProgress = false;
 
 function loadSession() {
   try {
@@ -167,11 +153,15 @@ async function authRequest(path, body) {
 async function ensureSession() {
   if (!session) return;
   if (session.expires_at - 60 > Date.now() / 1000) return;
-  try {
-    storeSession(await authRequest("token?grant_type=refresh_token", { refresh_token: session.refresh_token }));
-  } catch {
-    storeSession(null);
+  if (!refreshPromise) {
+    const refreshingSession = session;
+    refreshPromise = authRequest("token?grant_type=refresh_token", { refresh_token: refreshingSession.refresh_token })
+      .then((data) => {
+        if (session === refreshingSession) storeSession(data);
+      })
+      .finally(() => { refreshPromise = null; });
   }
+  await refreshPromise;
 }
 
 function isAuthed() {
@@ -201,8 +191,9 @@ function fromRow(row) {
   return Object.fromEntries(Object.entries(FIELD_MAP).map(([key, column]) => [key, row[column] ?? ""]));
 }
 
-async function remoteRequest(path, options = {}) {
+async function remoteRequest(path, options = {}, requireAuth = false) {
   await ensureSession();
+  if (requireAuth && !session) throw new Error("Se requiere una sesión para modificar medicamentos.");
   const response = await fetch(`${REMOTE_TABLE}${path}`, {
     ...options,
     headers: {
@@ -213,26 +204,20 @@ async function remoteRequest(path, options = {}) {
     },
   });
   if (!response.ok) throw new Error(`Supabase ${response.status}: ${await response.text()}`);
-  return response.status === 204 ? null : response.json();
+  const body = await response.text();
+  return body ? JSON.parse(body) : null;
 }
 
 async function initRemote() {
   try {
-    let rows = await remoteRequest("?select=*&order=generic_name.asc");
-    if (rows.length === 0 && Array.isArray(catalog) && catalog.length) {
-      await remoteRequest("", {
-        method: "POST",
-        headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
-        body: JSON.stringify(medicines.map(toRow)),
-      });
-      rows = await remoteRequest("?select=*&order=generic_name.asc");
-    }
+    const rows = await remoteRequest("?select=*&order=generic_name.asc");
+    if (!Array.isArray(rows)) throw new Error("La base de datos no devolvió una lista de medicamentos.");
     medicines = rows.map(fromRow);
     remoteActive = true;
     render();
   } catch (error) {
     console.error("No se pudo conectar con la base de datos:", error);
-    showToast("Sin conexión a la base de datos: se usan los datos locales.", true);
+    showToast("Sin conexión a la base de datos. No se pueden guardar cambios; recarga para volver a intentar.", true);
   }
 }
 
@@ -359,6 +344,11 @@ function setView(view) {
 
 function openForm(medicine = null, viewAfterClose = activeView === "edit" ? "edit" : "search") {
   if (!isAuthed()) return;
+  if (saveInProgress) return;
+  if (!remoteActive) {
+    showToast("No hay conexión con la base de datos. Recarga la página y vuelve a intentarlo.", true);
+    return;
+  }
   returnView = viewAfterClose;
   form.reset();
   formError.textContent = "";
@@ -407,6 +397,7 @@ function showDetails(medicine) {
 
 for (const button of document.querySelectorAll(".menu-button[data-view]")) {
   button.addEventListener("click", () => {
+    if (saveInProgress) return;
     if (button.dataset.view === "add") {
       openForm(null, "search");
       return;
@@ -420,10 +411,12 @@ for (const button of document.querySelectorAll(".menu-button[data-view]")) {
   });
 }
 document.querySelector("#close-dialog").addEventListener("click", () => {
+  if (saveInProgress) return;
   dialog.close();
   setView(returnView);
 });
 document.querySelector("#cancel-button").addEventListener("click", () => {
+  if (saveInProgress) return;
   dialog.close();
   setView(returnView);
 });
@@ -431,6 +424,9 @@ searchInput.addEventListener("input", render);
 groupFilter.addEventListener("change", render);
 dialog.addEventListener("close", () => {
   if (activeView === "add") setView(returnView);
+});
+dialog.addEventListener("cancel", (event) => {
+  if (saveInProgress) event.preventDefault();
 });
 
 document.addEventListener("keydown", (event) => {
@@ -469,8 +465,16 @@ removePhotoButton.addEventListener("click", resetPhoto);
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
-  if (!isAuthed()) return;
+  if (saveInProgress) return;
   formError.textContent = "";
+  if (!isAuthed()) {
+    formError.textContent = "Inicia sesión para guardar los cambios.";
+    return;
+  }
+  if (!remoteActive) {
+    formError.textContent = "No hay conexión con la base de datos. Recarga la página y vuelve a intentarlo.";
+    return;
+  }
   if (!form.reportValidity()) return;
 
   const data = Object.fromEntries(new FormData(form).entries());
@@ -498,27 +502,32 @@ form.addEventListener("submit", async (event) => {
     updatedAt: new Date().toISOString(),
   };
   const wasEditing = Boolean(editingId);
-  const nextMedicines = editingId
-    ? medicines.map((item) => item.id === editingId ? medicine : item)
-    : [medicine, ...medicines];
-
-  if (remoteActive) {
-    try {
-      await remoteRequest("", {
-        method: "POST",
-        headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
-        body: JSON.stringify([toRow(medicine)]),
-      });
-      medicines = nextMedicines;
-    } catch (error) {
-      console.error("No se pudo guardar en la base de datos:", error);
-      formError.textContent = "No se pudo guardar en la base de datos. Intenta de nuevo.";
-      return;
+  const submitButton = form.querySelector('button[type="submit"]');
+  saveInProgress = true;
+  submitButton.disabled = true;
+  try {
+    const rows = await remoteRequest(wasEditing ? `?id=eq.${encodeURIComponent(medicine.id)}` : "", {
+      method: wasEditing ? "PATCH" : "POST",
+      headers: { Prefer: "return=representation" },
+      body: JSON.stringify(toRow(medicine)),
+    }, true);
+    if (!Array.isArray(rows) || rows.length !== 1 || rows[0].id !== medicine.id) {
+      throw new Error("La base de datos no confirmó la ficha guardada.");
     }
-  } else if (!saveMedicines(nextMedicines)) return;
-  dialog.close();
-  setView(wasEditing ? returnView : "search");
-  showToast(wasEditing ? "Ficha actualizada." : "Medicamento agregado.");
+    const savedMedicine = fromRow(rows[0]);
+    medicines = wasEditing
+      ? medicines.map((item) => item.id === medicine.id ? savedMedicine : item)
+      : [savedMedicine, ...medicines];
+    dialog.close();
+    setView(wasEditing ? returnView : "search");
+    showToast(wasEditing ? "Ficha actualizada." : "Medicamento agregado.");
+  } catch (error) {
+    console.error("No se pudo guardar en la base de datos:", error);
+    formError.textContent = "No se pudo confirmar el guardado en la base de datos. Revisa tu conexión y sesión, y vuelve a intentarlo.";
+  } finally {
+    saveInProgress = false;
+    submitButton.disabled = false;
+  }
 });
 
 list.addEventListener("click", async (event) => {
@@ -529,25 +538,32 @@ list.addEventListener("click", async (event) => {
   if (button.dataset.action === "view") showDetails(medicine);
   if (button.dataset.action === "edit") openForm(medicine, activeView);
   if (button.dataset.action === "delete" && isAuthed()) {
+    if (deleteInProgress) return;
     const confirmed = window.confirm(`¿Eliminar la ficha de ${medicine.genericName}? Esta acción no se puede deshacer.`);
     if (!confirmed) return;
-    if (remoteActive) {
-      try {
-        await remoteRequest(`?id=eq.${encodeURIComponent(medicine.id)}`, { method: "DELETE", headers: { Prefer: "return=minimal" } });
-        medicines = medicines.filter((item) => item.id !== medicine.id);
-        render();
-        showToast("Ficha eliminada.");
-      } catch (error) {
-        console.error("No se pudo eliminar en la base de datos:", error);
-        showToast("No se pudo eliminar en la base de datos.", true);
-      }
+    if (!remoteActive) {
+      showToast("No hay conexión con la base de datos. Recarga la página y vuelve a intentarlo.", true);
       return;
     }
-    const nextDeletedCatalogIds = new Set(deletedCatalogIds);
-    if (medicine.id.startsWith("catalog-")) nextDeletedCatalogIds.add(medicine.id);
-    if (saveMedicines(medicines.filter((item) => item.id !== medicine.id), nextDeletedCatalogIds)) {
+    deleteInProgress = true;
+    button.disabled = true;
+    try {
+      const rows = await remoteRequest(`?id=eq.${encodeURIComponent(medicine.id)}`, {
+        method: "DELETE",
+        headers: { Prefer: "return=representation" },
+      }, true);
+      if (!Array.isArray(rows) || rows.length !== 1 || rows[0].id !== medicine.id) {
+        throw new Error("La base de datos no confirmó la ficha eliminada.");
+      }
+      medicines = medicines.filter((item) => item.id !== medicine.id);
       render();
       showToast("Ficha eliminada.");
+    } catch (error) {
+      console.error("No se pudo eliminar en la base de datos:", error);
+      showToast("No se pudo confirmar la eliminación. Revisa tu conexión y sesión.", true);
+    } finally {
+      deleteInProgress = false;
+      button.disabled = false;
     }
   }
 });
@@ -571,6 +587,7 @@ const loginForm = document.querySelector("#login-form");
 const loginError = document.querySelector("#login-error");
 
 document.querySelector("#auth-button").addEventListener("click", () => {
+  if (saveInProgress || deleteInProgress) return;
   if (isAuthed()) {
     storeSession(null);
     if (dialog.open) dialog.close();
@@ -604,5 +621,8 @@ groupFilter.value = "";
 loadSession();
 setView("search");
 updateAuthUi();
-ensureSession().then(updateAuthUi);
+ensureSession().then(updateAuthUi).catch((error) => {
+  console.error("No se pudo renovar la sesión:", error);
+  showToast("No se pudo renovar la sesión. Revisa tu conexión e inicia sesión de nuevo.", true);
+});
 initRemote();
