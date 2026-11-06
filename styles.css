@@ -277,3 +277,141 @@ dialog::backdrop { background: #14251e80; backdrop-filter: blur(3px); }
 }
 
 [hidden] { display: none !important; }
+
+/* ===== Diseño llamativo ===== */
+:root {
+  --green: #0f9d77;
+  --green-dark: #0b7a5c;
+  --green-pale: #dcf7ee;
+  --accent: #ff7a59;
+  --violet: #6c4cf1;
+  --canvas: #eef6fb;
+  --line: #dbe7ef;
+  --shadow: 0 10px 30px rgba(24, 78, 119, .12);
+}
+
+body {
+  font-size: 15px;
+  background:
+    radial-gradient(900px 420px at 100% -80px, rgba(108, 76, 241, .16), transparent 70%),
+    radial-gradient(800px 400px at -10% 120px, rgba(15, 157, 119, .18), transparent 70%),
+    var(--canvas);
+  background-attachment: fixed;
+}
+
+.topbar {
+  height: 76px;
+  background: linear-gradient(100deg, #0b7a5c 0%, #0f9d77 45%, #1aa7c9 100%);
+  border-bottom: 0;
+  box-shadow: 0 6px 24px rgba(11, 122, 92, .28);
+}
+.brand { color: #fff; font-size: 24px; letter-spacing: -.5px; }
+.brand-mark { width: 38px; height: 38px; border-radius: 12px; background: #fff; color: var(--green-dark); font-weight: 800; box-shadow: 0 4px 12px rgba(0,0,0,.18); }
+.brand-period { color: #ffe08a; }
+.main-menu { gap: 8px; }
+.menu-button {
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 999px;
+  color: rgba(255,255,255,.9);
+  background: rgba(255,255,255,.14);
+  font-size: 14px;
+  font-weight: 700;
+  transition: background .18s, transform .18s;
+}
+.menu-button:hover { color: #fff; background: rgba(255,255,255,.28); transform: translateY(-1px); }
+.menu-button.active { color: var(--green-dark); background: #fff; }
+.menu-button.active::after { display: none; }
+#auth-button { background: var(--accent); color: #fff; }
+#auth-button:hover { background: #ff6238; }
+
+.layout { padding-top: 34px; }
+.page-heading {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+  padding: 34px 36px;
+  border-radius: 22px;
+  color: #fff;
+  background: linear-gradient(120deg, #6c4cf1 0%, #0f9d77 100%);
+  box-shadow: var(--shadow);
+}
+.page-heading::after {
+  position: absolute; top: -40px; right: -30px; width: 220px; height: 220px;
+  border-radius: 50%; background: rgba(255,255,255,.14); content: "";
+}
+.page-heading .eyebrow { color: #ffe08a; font-size: 12px; }
+.page-heading h1 { font-size: clamp(34px, 5vw, 52px); letter-spacing: -1.5px; }
+.page-heading > p:last-child { color: rgba(255,255,255,.92); font-size: 16px; }
+
+.source-notice { border-color: #ffe2a8; color: #7a5a14; background: #fff6df; border-radius: 14px; font-size: 13px; }
+
+.search-box, .group-filter select { height: 56px; border: 2px solid transparent; border-radius: 16px; box-shadow: var(--shadow); font-size: 15px; }
+.search-box { padding: 0 18px; }
+.search-box input { font-size: 15px; }
+.search-box:focus-within, .group-filter select:focus { border-color: var(--green); box-shadow: 0 0 0 4px rgba(15,157,119,.18); }
+.group-filter select { padding: 0 38px 0 16px; color: #2b3b46; }
+
+.list-heading h2 { font-size: 26px; }
+.list-heading .eyebrow { color: var(--violet); font-size: 11px; }
+.result-count { padding: 5px 12px; border-radius: 999px; color: #fff; background: var(--violet); font-size: 12px; font-weight: 700; }
+
+.medicine-list { gap: 14px; }
+.medicine-card {
+  position: relative;
+  grid-template-columns: 76px minmax(0, 1fr) auto;
+  gap: 18px;
+  padding: 16px 18px;
+  border: 0;
+  border-left: 6px solid var(--green);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  transition: transform .18s, box-shadow .18s;
+}
+.medicine-card:nth-child(3n+2) { border-left-color: var(--violet); }
+.medicine-card:nth-child(3n) { border-left-color: var(--accent); }
+.medicine-card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(24,78,119,.2); }
+.medicine-thumb { width: 76px; height: 76px; border-radius: 14px; background: linear-gradient(135deg, #e3f6ee, #e8e2ff); }
+.medicine-info h3 { font-size: 18px; }
+.medicine-brand { color: #5d6f7c; font-size: 13px; text-transform: uppercase; letter-spacing: .4px; }
+.tag { padding: 5px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+.tag-group { color: #fff; background: var(--violet); }
+.icon-button { width: 40px; height: 40px; border-radius: 12px; background: #eef3f7; color: var(--green-dark); }
+.icon-button:hover { color: #fff; background: var(--green); }
+.delete-button:hover { color: #fff; background: #e5484d; }
+
+.button { min-height: 46px; border-radius: 12px; font-size: 14px; font-weight: 700; }
+.button-primary { background: linear-gradient(120deg, var(--green), #1aa7c9); box-shadow: 0 6px 16px rgba(15,157,119,.3); }
+.button-primary:hover { background: linear-gradient(120deg, var(--green-dark), #1596b6); }
+.button-quiet { background: #eef3f7; color: #44566a; }
+
+.medicine-dialog, .detail-dialog, #login-dialog { border-radius: 22px; box-shadow: 0 30px 90px rgba(20, 30, 70, .35); }
+.dialog-header { background: linear-gradient(120deg, #6c4cf1, #0f9d77); color: #fff; }
+.dialog-header .eyebrow { color: #ffe08a; }
+.dialog-header .icon-button { color: #fff; background: rgba(255,255,255,.2); }
+.field-label { font-size: 13px; }
+.field input, .field textarea { border: 2px solid #e2ebf2; border-radius: 10px; font-size: 14px; }
+.field input:focus, .field textarea:focus { border-color: var(--green); }
+.detail-section h3 { color: var(--violet); font-size: 12px; }
+.detail-section p { font-size: 14px; color: #3d4d58; }
+.detail-title-wrap h2 { font-size: 26px; }
+.detail-photo { width: 110px; height: 110px; flex-basis: 110px; border-radius: 16px; }
+
+/* Inicio de sesión */
+#login-dialog { width: min(400px, calc(100% - 32px)); padding: 0; border: 0; overflow: hidden; }
+#login-form { padding: 0 !important; gap: 0 !important; min-width: 0 !important; }
+#login-form h2 { margin: 0; padding: 26px 28px; color: #fff; background: linear-gradient(120deg, #6c4cf1, #0f9d77); font-size: 24px; }
+#login-form label { display: grid; gap: 6px; margin: 18px 28px 0; color: #394a56; font-size: 13px; font-weight: 700; }
+#login-form input { padding: 12px; border: 2px solid #e2ebf2; border-radius: 10px; outline: 0; font-size: 15px; }
+#login-form input:focus { border-color: var(--green); box-shadow: 0 0 0 4px rgba(15,157,119,.15); }
+#login-form #login-error { min-height: 20px; margin: 12px 28px 0 !important; font-size: 13px; }
+#login-form > div { padding: 12px 28px 24px; }
+
+@media (max-width: 560px) {
+  .topbar { height: auto; min-height: 64px; padding: 10px 12px; flex-wrap: wrap; gap: 8px; }
+  .main-menu { flex-wrap: wrap; gap: 6px; }
+  .menu-button { height: 36px; padding: 0 14px; font-size: 13px; }
+  .page-heading { padding: 24px 22px; border-radius: 18px; }
+  .medicine-card { grid-template-columns: 60px minmax(0, 1fr) auto; gap: 12px; }
+  .medicine-thumb { width: 60px; height: 60px; }
+}

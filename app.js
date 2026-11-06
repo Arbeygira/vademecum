@@ -184,7 +184,7 @@ function updateAuthUi() {
     button.hidden = !authed;
   }
   const authButton = document.querySelector("#auth-button");
-  authButton.textContent = authed ? "Cerrar sesi?n" : "Iniciar sesi?n";
+  authButton.textContent = authed ? "Cerrar sesión" : "Iniciar sesión";
   authButton.title = authed ? session.email : "";
   if (!authed && (activeView === "edit" || activeView === "add")) setView("search");
   else render();
@@ -568,7 +568,7 @@ document.querySelector("#auth-button").addEventListener("click", () => {
     storeSession(null);
     if (dialog.open) dialog.close();
     updateAuthUi();
-    showToast("Sesi?n cerrada.");
+    showToast("Sesión cerrada.");
     return;
   }
   loginForm.reset();
@@ -587,9 +587,9 @@ loginForm.addEventListener("submit", async (event) => {
     }));
     loginDialog.close();
     updateAuthUi();
-    showToast("Sesi?n iniciada.");
+    showToast("Sesión iniciada.");
   } catch {
-    loginError.textContent = "Correo o contrase?a incorrectos.";
+    loginError.textContent = "Correo o contraseña incorrectos.";
   }
 });
 
