@@ -184,8 +184,11 @@ function updateAuthUi() {
     button.hidden = !authed;
   }
   const authButton = document.querySelector("#auth-button");
-  authButton.textContent = authed ? "Cerrar sesión" : "Iniciar sesión";
-  authButton.title = authed ? session.email : "";
+  const authLabel = authed ? "Cerrar sesión" : "Iniciar sesión";
+  authButton.querySelector(".menu-label").textContent = authLabel;
+  authButton.querySelector(".login-arrow").toggleAttribute("hidden", authed);
+  authButton.querySelector(".logout-arrow").toggleAttribute("hidden", !authed);
+  authButton.title = authLabel;
   if (!authed && (activeView === "edit" || activeView === "add")) setView("search");
   else render();
 }
