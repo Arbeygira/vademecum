@@ -275,3 +275,5 @@ dialog::backdrop { background: #14251e80; backdrop-filter: blur(3px); }
   .dialog-footer { padding-right: 19px; padding-left: 19px; }
   .detail-content { padding: 20px; }
 }
+
+[hidden] { display: none !important; }

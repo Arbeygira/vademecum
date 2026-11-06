@@ -132,6 +132,63 @@ const FIELD_MAP = {
   updatedAt: "updated_at",
 };
 let remoteActive = false;
+const SESSION_KEY = "vademecum.session.v1";
+let session = null;
+
+function loadSession() {
+  try {
+    session = JSON.parse(localStorage.getItem(SESSION_KEY)) || null;
+  } catch {
+    session = null;
+  }
+}
+
+function storeSession(data) {
+  session = data ? {
+    access_token: data.access_token,
+    refresh_token: data.refresh_token,
+    expires_at: data.expires_at ?? Math.floor(Date.now() / 1000) + data.expires_in,
+    email: data.user?.email ?? session?.email ?? "",
+  } : null;
+  if (session) localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+  else localStorage.removeItem(SESSION_KEY);
+}
+
+async function authRequest(path, body) {
+  const response = await fetch(`${SUPABASE_URL}/auth/v1/${path}`, {
+    method: "POST",
+    headers: { apikey: SUPABASE_KEY, "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  if (!response.ok) throw new Error("auth");
+  return response.json();
+}
+
+async function ensureSession() {
+  if (!session) return;
+  if (session.expires_at - 60 > Date.now() / 1000) return;
+  try {
+    storeSession(await authRequest("token?grant_type=refresh_token", { refresh_token: session.refresh_token }));
+  } catch {
+    storeSession(null);
+  }
+}
+
+function isAuthed() {
+  return Boolean(session);
+}
+
+function updateAuthUi() {
+  const authed = isAuthed();
+  for (const button of document.querySelectorAll('.menu-button[data-view="add"], .menu-button[data-view="edit"]')) {
+    button.hidden = !authed;
+  }
+  const authButton = document.querySelector("#auth-button");
+  authButton.textContent = authed ? "Cerrar sesi?n" : "Iniciar sesi?n";
+  authButton.title = authed ? session.email : "";
+  if (!authed && (activeView === "edit" || activeView === "add")) setView("search");
+  else render();
+}
 
 function toRow(medicine) {
   return Object.fromEntries(Object.entries(FIELD_MAP).map(([key, column]) => [column, medicine[key] || (key === "updatedAt" ? new Date().toISOString() : "")]));
@@ -142,11 +199,12 @@ function fromRow(row) {
 }
 
 async function remoteRequest(path, options = {}) {
+  await ensureSession();
   const response = await fetch(`${REMOTE_TABLE}${path}`, {
     ...options,
     headers: {
       apikey: SUPABASE_KEY,
-      Authorization: `Bearer ${SUPABASE_KEY}`,
+      Authorization: `Bearer ${session?.access_token ?? SUPABASE_KEY}`,
       "Content-Type": "application/json",
       ...options.headers,
     },
@@ -282,6 +340,7 @@ function setPhoto(data) {
 }
 
 function setView(view) {
+  if (!isAuthed() && view !== "search") view = "search";
   activeView = view;
   for (const button of document.querySelectorAll(".menu-button")) {
     const active = button.dataset.view === view;
@@ -296,6 +355,7 @@ function setView(view) {
 }
 
 function openForm(medicine = null, viewAfterClose = activeView === "edit" ? "edit" : "search") {
+  if (!isAuthed()) return;
   returnView = viewAfterClose;
   form.reset();
   formError.textContent = "";
@@ -336,13 +396,13 @@ function showDetails(medicine) {
       <div class="detail-grid">${sections}</div>
       <div class="detail-footer">
         <button class="button button-quiet" type="button" data-action="close-detail">Cerrar</button>
-        <button class="button button-primary" type="button" data-action="edit-detail" data-id="${escapeHtml(medicine.id)}">Editar ficha</button>
+        ${isAuthed() ? `<button class="button button-primary" type="button" data-action="edit-detail" data-id="${escapeHtml(medicine.id)}">Editar ficha</button>` : ""}
       </div>
     </div>`;
   detailDialog.showModal();
 }
 
-for (const button of document.querySelectorAll(".menu-button")) {
+for (const button of document.querySelectorAll(".menu-button[data-view]")) {
   button.addEventListener("click", () => {
     if (button.dataset.view === "add") {
       openForm(null, "search");
@@ -402,6 +462,7 @@ removePhotoButton.addEventListener("click", resetPhoto);
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
+  if (!isAuthed()) return;
   formError.textContent = "";
   if (!form.reportValidity()) return;
 
@@ -460,7 +521,7 @@ list.addEventListener("click", async (event) => {
   if (!medicine) return;
   if (button.dataset.action === "view") showDetails(medicine);
   if (button.dataset.action === "edit") openForm(medicine, activeView);
-  if (button.dataset.action === "delete") {
+  if (button.dataset.action === "delete" && isAuthed()) {
     const confirmed = window.confirm(`¿Eliminar la ficha de ${medicine.genericName}? Esta acción no se puede deshacer.`);
     if (!confirmed) return;
     if (remoteActive) {
@@ -498,6 +559,43 @@ detailContent.addEventListener("click", (event) => {
   }
 });
 
+const loginDialog = document.querySelector("#login-dialog");
+const loginForm = document.querySelector("#login-form");
+const loginError = document.querySelector("#login-error");
+
+document.querySelector("#auth-button").addEventListener("click", () => {
+  if (isAuthed()) {
+    storeSession(null);
+    if (dialog.open) dialog.close();
+    updateAuthUi();
+    showToast("Sesi?n cerrada.");
+    return;
+  }
+  loginForm.reset();
+  loginError.textContent = "";
+  loginDialog.showModal();
+  loginForm.elements.email.focus();
+});
+document.querySelector("#login-cancel").addEventListener("click", () => loginDialog.close());
+loginForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  loginError.textContent = "";
+  try {
+    storeSession(await authRequest("token?grant_type=password", {
+      email: loginForm.elements.email.value.trim(),
+      password: loginForm.elements.password.value,
+    }));
+    loginDialog.close();
+    updateAuthUi();
+    showToast("Sesi?n iniciada.");
+  } catch {
+    loginError.textContent = "Correo o contrase?a incorrectos.";
+  }
+});
+
 groupFilter.value = "";
+loadSession();
 setView("search");
+updateAuthUi();
+ensureSession().then(updateAuthUi);
 initRemote();
