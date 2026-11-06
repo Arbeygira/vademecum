@@ -309,6 +309,7 @@ body {
 .brand-text { display: flex; flex-direction: column; }
 .brand .author-credit { margin-top: 2px; font-size: 10px; font-weight: 600; letter-spacing: 0; }
 .brand-mark { width: 38px; height: 38px; border-radius: 12px; background: #fff; color: var(--green-dark); font-weight: 800; box-shadow: 0 4px 12px rgba(0,0,0,.18); }
+.brand-mark img { display: block; width: 100%; height: 100%; }
 .brand-period { color: #ffe08a; }
 .main-menu { gap: 8px; }
 .menu-button {
@@ -375,6 +376,8 @@ body {
 .medicine-card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(24,78,119,.2); }
 .medicine-thumb { width: 76px; height: 76px; border-radius: 14px; background: linear-gradient(135deg, #e3f6ee, #e8e2ff); }
 .medicine-info h3 { font-size: 18px; }
+.medicine-info h3 { overflow: visible; text-overflow: clip; white-space: normal; overflow-wrap: anywhere; }
+.medicine-brand, .tag, .detail-title-wrap h2, .detail-title-wrap p { overflow-wrap: anywhere; }
 .medicine-brand { color: #5d6f7c; font-size: 13px; text-transform: uppercase; letter-spacing: .4px; }
 .tag { padding: 5px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; }
 .tag-group { color: #fff; background: var(--violet); }
@@ -400,14 +403,14 @@ body {
 .detail-photo { width: 110px; height: 110px; flex-basis: 110px; border-radius: 16px; }
 
 /* Inicio de sesión */
-#login-dialog { width: min(400px, calc(100% - 32px)); padding: 0; border: 0; overflow: hidden; }
-#login-form { padding: 0 !important; gap: 0 !important; min-width: 0 !important; }
+#login-dialog { width: min(400px, calc(100% - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 0; overflow: auto; }
+#login-form { grid-template-columns: minmax(0, 1fr); padding: 0 !important; gap: 0 !important; min-width: 0 !important; }
 #login-form h2 { margin: 0; padding: 26px 28px; color: #fff; background: linear-gradient(120deg, #6c4cf1, #0f9d77); font-size: 24px; }
 #login-form label { display: grid; gap: 6px; margin: 18px 28px 0; color: #394a56; font-size: 13px; font-weight: 700; }
-#login-form input { padding: 12px; border: 2px solid #e2ebf2; border-radius: 10px; outline: 0; font-size: 15px; }
+#login-form input { min-width: 0; width: 100%; padding: 12px; border: 2px solid #e2ebf2; border-radius: 10px; outline: 0; font-size: 15px; }
 #login-form input:focus { border-color: var(--green); box-shadow: 0 0 0 4px rgba(15,157,119,.15); }
 #login-form #login-error { min-height: 20px; margin: 12px 28px 0 !important; font-size: 13px; }
-#login-form > div { padding: 12px 28px 24px; }
+#login-form > div { flex-wrap: wrap; padding: 12px 28px 24px; }
 
 @media (max-width: 560px) {
   .topbar { height: auto; min-height: 64px; padding: 10px 12px; flex-wrap: wrap; gap: 8px; }
@@ -416,4 +419,14 @@ body {
   .page-heading { padding: 24px 22px; border-radius: 18px; }
   .medicine-card { grid-template-columns: 60px minmax(0, 1fr) auto; gap: 12px; }
   .medicine-thumb { width: 60px; height: 60px; }
+  .search-box input, .group-filter select, .field input, .field textarea, #login-form input { font-size: 16px; }
+  .detail-photo { width: 76px; height: 76px; flex-basis: 76px; }
+  .detail-top { gap: 12px; }
+  .detail-title-wrap h2 { font-size: 21px; }
+  .dialog-footer, .detail-footer { flex-wrap: wrap; }
+}
+
+@media (max-width: 850px) {
+  .topbar { height: auto; min-height: 76px; padding-top: 10px; padding-bottom: 10px; flex-wrap: wrap; gap: 10px; }
+  .main-menu { flex-wrap: wrap; align-self: auto; }
 }
