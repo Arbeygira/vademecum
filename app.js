@@ -112,6 +112,69 @@ function saveMedicines(nextMedicines, nextDeletedCatalogIds = deletedCatalogIds)
   }
 }
 
+const SUPABASE_URL = "https://brtnrhhbhvgbvdhxwdxk.supabase.co";
+const SUPABASE_KEY = "sb_publishable_lbNZmDP6xsFYmmVUCcGGjg_Xxkvtlhg";
+const REMOTE_TABLE = `${SUPABASE_URL}/rest/v1/medicamentos`;
+const FIELD_MAP = {
+  id: "id",
+  genericName: "generic_name",
+  brandName: "brand_name",
+  pharmacologicalGroup: "pharmacological_group",
+  presentation: "presentation",
+  mechanism: "mechanism",
+  indications: "indications",
+  adultDose: "adult_dose",
+  pediatricDose: "pediatric_dose",
+  nursingCare: "nursing_care",
+  sideEffects: "side_effects",
+  adverseReactions: "adverse_reactions",
+  photo: "photo",
+  updatedAt: "updated_at",
+};
+let remoteActive = false;
+
+function toRow(medicine) {
+  return Object.fromEntries(Object.entries(FIELD_MAP).map(([key, column]) => [column, medicine[key] || (key === "updatedAt" ? new Date().toISOString() : "")]));
+}
+
+function fromRow(row) {
+  return Object.fromEntries(Object.entries(FIELD_MAP).map(([key, column]) => [key, row[column] ?? ""]));
+}
+
+async function remoteRequest(path, options = {}) {
+  const response = await fetch(`${REMOTE_TABLE}${path}`, {
+    ...options,
+    headers: {
+      apikey: SUPABASE_KEY,
+      Authorization: `Bearer ${SUPABASE_KEY}`,
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+  if (!response.ok) throw new Error(`Supabase ${response.status}: ${await response.text()}`);
+  return response.status === 204 ? null : response.json();
+}
+
+async function initRemote() {
+  try {
+    let rows = await remoteRequest("?select=*&order=generic_name.asc");
+    if (rows.length === 0 && Array.isArray(catalog) && catalog.length) {
+      await remoteRequest("", {
+        method: "POST",
+        headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
+        body: JSON.stringify(medicines.map(toRow)),
+      });
+      rows = await remoteRequest("?select=*&order=generic_name.asc");
+    }
+    medicines = rows.map(fromRow);
+    remoteActive = true;
+    render();
+  } catch (error) {
+    console.error("No se pudo conectar con la base de datos:", error);
+    showToast("Sin conexión a la base de datos: se usan los datos locales.", true);
+  }
+}
+
 function escapeHtml(value = "") {
   return String(value).replace(/[&<>"']/g, (character) => ({
     "&": "&amp;",
@@ -337,7 +400,7 @@ photoInput.addEventListener("change", () => {
 
 removePhotoButton.addEventListener("click", resetPhoto);
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
   formError.textContent = "";
   if (!form.reportValidity()) return;
@@ -371,13 +434,26 @@ form.addEventListener("submit", (event) => {
     ? medicines.map((item) => item.id === editingId ? medicine : item)
     : [medicine, ...medicines];
 
-  if (!saveMedicines(nextMedicines)) return;
+  if (remoteActive) {
+    try {
+      await remoteRequest("", {
+        method: "POST",
+        headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
+        body: JSON.stringify([toRow(medicine)]),
+      });
+      medicines = nextMedicines;
+    } catch (error) {
+      console.error("No se pudo guardar en la base de datos:", error);
+      formError.textContent = "No se pudo guardar en la base de datos. Intenta de nuevo.";
+      return;
+    }
+  } else if (!saveMedicines(nextMedicines)) return;
   dialog.close();
   setView(wasEditing ? returnView : "search");
   showToast(wasEditing ? "Ficha actualizada." : "Medicamento agregado.");
 });
 
-list.addEventListener("click", (event) => {
+list.addEventListener("click", async (event) => {
   const button = event.target.closest("[data-action]");
   if (!button) return;
   const medicine = medicines.find((item) => item.id === button.dataset.id);
@@ -387,6 +463,18 @@ list.addEventListener("click", (event) => {
   if (button.dataset.action === "delete") {
     const confirmed = window.confirm(`¿Eliminar la ficha de ${medicine.genericName}? Esta acción no se puede deshacer.`);
     if (!confirmed) return;
+    if (remoteActive) {
+      try {
+        await remoteRequest(`?id=eq.${encodeURIComponent(medicine.id)}`, { method: "DELETE", headers: { Prefer: "return=minimal" } });
+        medicines = medicines.filter((item) => item.id !== medicine.id);
+        render();
+        showToast("Ficha eliminada.");
+      } catch (error) {
+        console.error("No se pudo eliminar en la base de datos:", error);
+        showToast("No se pudo eliminar en la base de datos.", true);
+      }
+      return;
+    }
     const nextDeletedCatalogIds = new Set(deletedCatalogIds);
     if (medicine.id.startsWith("catalog-")) nextDeletedCatalogIds.add(medicine.id);
     if (saveMedicines(medicines.filter((item) => item.id !== medicine.id), nextDeletedCatalogIds)) {
@@ -412,3 +500,4 @@ detailContent.addEventListener("click", (event) => {
 
 groupFilter.value = "";
 setView("search");
+initRemote();
