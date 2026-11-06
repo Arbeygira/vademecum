@@ -12,7 +12,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Náuseas, vómito, boca seca, somnolencia, sedación, estreñimiento, miosis, retención urinaria, dependencia física y tolerancia con uso prolongado.",
     "adverseReactions": "Depresión respiratoria severa, bradicardia grave, hipotensión arterial, broncoespasmo, paro respiratorio, reacciones de hipersensibilidad/anafilaxia.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Morphine.svg/500px-Morphine.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Morphine_1mL_Vial.jpg/500px-Morphine_1mL_Vial.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-002",
@@ -27,7 +27,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Náuseas, vómitos, mareos, dolor de cabeza, somnolencia, rigidez muscular (tórax leñoso), visión borrosa, diaforesis, dependencia.",
     "adverseReactions": "Depresión respiratoria grave, paro respiratorio, bradicardia severa, hipotensión, tórax leñoso (rigidez de la pared torácica), espasmo del esfínter de Oddi.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Fentanyl.svg/500px-Fentanyl.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Actiq-30-pack-600mcg-fentanyl-base.jpg/500px-Actiq-30-pack-600mcg-fentanyl-base.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-003",
@@ -42,7 +42,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Náuseas, vómitos, mareo, vértigo, sudoración, boca seca, cefalea, somnolencia, cansancio, estreñimiento, debilidad.",
     "adverseReactions": "Depresión respiratoria, paro respiratorio, hipotensión severa, convulsiones, síndrome serotoninérgico, reacciones alérgicas (anafilaxia), dependencia.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Tramadol_as_a_racemic_mixture.svg/500px-Tramadol_as_a_racemic_mixture.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/50_mg_Tramadol_HCl_tablets_%28generic_Ultram%29_marketed_by_Amneal_Pharmaceuticals.jpg/330px-50_mg_Tramadol_HCl_tablets_%28generic_Ultram%29_marketed_by_Amneal_Pharmaceuticals.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-004",
@@ -57,7 +57,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "• Niños VO: 10-15 mg/kg cada 6 horas",
     "sideEffects": "Malestar leve, erupciones cutáneas, náuseas, reacciones alérgicas transitorias, urticaria.",
     "adverseReactions": "Hepatotoxicidad severa, necrosis hepática aguda fatal (en sobredosis), agranulocitosis, leucopenia, trombocitopenia, síndrome de Stevens-Johnson.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Paracetamol-skeletal.svg/500px-Paracetamol-skeletal.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Paracetamol_650.jpg/500px-Paracetamol_650.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-005",
@@ -72,7 +72,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Hipotensión transitoria, erupciones cutáneas, rash, molestias gastrointestinales, coloración roja en la orina.",
     "adverseReactions": "Agranulocitosis, anemia plásica, leucopenia, choque anafiláctico/hipotensivo severo, broncoespasmo, síndrome de Lyell.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Metamizole_monohydrate_3D_ball-and-stick.png/500px-Metamizole_monohydrate_3D_ball-and-stick.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Metamizole_500mg-1ml_vial_white_background.jpg/500px-Metamizole_500mg-1ml_vial_white_background.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-006",
@@ -87,7 +87,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "• Niños VO: 5-10 mg/kg cada 6-8 horas",
     "sideEffects": "Dispepsia, pirosis, epigastralgia, náuseas, diarrea, constipación, cefalea, mareo, somnolencia, retención de líquidos.",
     "adverseReactions": "Úlcera péptica perforada, hemorragia digestiva alta, nefrotoxicidad (insuficiencia renal aguda), reacciones anafilácticas, eventos cardiovasculares aterotrombóticos.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/37/Ibuprofen-3D-balls.png/500px-Ibuprofen-3D-balls.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/200mg_ibuprofen_tablets.jpg/500px-200mg_ibuprofen_tablets.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-007",
@@ -102,7 +102,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Dispepsia, dolor epigástrico, náuseas, diarrea, estreñimiento, flatulencia, cefalea, mareo, elevación transitoria de transaminasas.",
     "adverseReactions": "Úlcera gástrica o intestinal con perforación/hemorragia, insuficiencia renal aguda, nefrotoxicidad, hepatotoxicidad, infarto de miocardio o accidente cerebrovascular (en uso crónico a dosis altas).",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Diclofenac.svg/500px-Diclofenac.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Diclofenac_Duo_75_mg_cps.jpg/500px-Diclofenac_Duo_75_mg_cps.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-008",
@@ -117,7 +117,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Náuseas, vómitos, diarrea, dolor abdominal, cefalea, exantema cutáneo, prurito, flebitis en la zona de infusión.",
     "adverseReactions": "Colitis pseudomembranosa, convulsiones, choque anafiláctico, trombocitopenia, leucopenia, anemia hemolítica, hepatotoxicidad severa.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Meropenem_skeletal_formula_labelled.svg/500px-Meropenem_skeletal_formula_labelled.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5b/Meropenem_1.jpg/500px-Meropenem_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-009",
@@ -132,7 +132,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Náuseas, vómitos, diarrea, fiebre, erupción cutánea, escalofríos, flebitis en el sitio de inyección.",
     "adverseReactions": "Síndrome del Hombre Rojo (liberación masiva de histamina con rubicundez, hipotensión y prurito), ototoxicidad (sordera transitoria o permanente), nefrotoxicidad, neutropenia, trombocitopenia.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Vancomycin_structure.svg/500px-Vancomycin_structure.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Hospira_Issues_A_Voluntary_Nationwide_Recall_of_One_Lot_of_Vancomycin_Hydrochloride_For_Injection_USP%2C_Equivalent_to_1_g_Vancomycin_%28Sterile_Powder%29_Due_to_Uncontrolled_Storage_During_Transit_%2824103394022%29.jpg/500px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-010",
@@ -147,7 +147,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Náuseas, vómitos, diarrea, calambres musculares, parestesias, erupción cutánea, dolor en el sitio de inyección IM.",
     "adverseReactions": "Ototoxicidad irreversible (daño al VIII par craneal vestibular y coclear), nefrotoxicidad (necrosis tubular aguda), bloqueo neuromuscular con parálisis respiratoria.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Gentamicin_C1_ball-and-stick_model_from_xtal_2016.png/500px-Gentamicin_C1_ball-and-stick_model_from_xtal_2016.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": ""
   },
   {
     "id": "catalog-011",
@@ -162,7 +162,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "• Niños VO: 25-50 mg/kg/día divididos en 4 tomas",
     "sideEffects": "Dispepsia, malestar estomacal, náuseas, vómitos, diarrea moderada, erupciones cutáneas leves, mareos.",
     "adverseReactions": "Reacciones de anafilaxia/choque anafiláctico, colitis pseudomembranosa, hepatotoxicidad, anemia hemolítica, eritrodermia, síndrome de Stevens-Johnson.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Cefalexin.svg/500px-Cefalexin.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/A_course_of_green_cefalexin_pills.jpg/500px-A_course_of_green_cefalexin_pills.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-012",
@@ -177,7 +177,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Náuseas, vómitos, diarrea, anorexia, erupción cutánea, prurito vulvar/vaginal, dolor local en el sitio de inyección.",
     "adverseReactions": "Shock anafiláctico, colitis pseudomembranosa, trombocitopenia, leucopenia, flebitis severa, insuficiencia renal reactiva.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Cefazolinate-from-xtal-3D-bs-17.png/500px-Cefazolinate-from-xtal-3D-bs-17.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": ""
   },
   {
     "id": "catalog-013",
@@ -192,7 +192,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "• Niños VO: 40-90 mg/kg/día divididos en 2 o 3 tomas",
     "sideEffects": "Náuseas, vómitos, diarrea, indigestión, exantema maculopapular, prurito, urticaria ligera.",
     "adverseReactions": "Reacciones de anafilaxia o choque anafiláctico, colitis pseudomembranosa por C. difficile, nefritis intersticial, leucopenia, hepatotoxicidad colestásica.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Amoxicillin-from-xtal-3D-bs-17.png/500px-Amoxicillin-from-xtal-3D-bs-17.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Amoxicillin_500mg_capsules_on_a_plate_%28Sandoz%29.jpg/500px-Amoxicillin_500mg_capsules_on_a_plate_%28Sandoz%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-014",
@@ -207,7 +207,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Diarrea, náuseas, vómitos, malestar estomacal, distensión abdominal, flatulencia, cefalea, fatiga, dolor local.",
     "adverseReactions": "Anemia hemolítica, shock anafiláctico, colitis pseudomembranosa, trombocitopenia, nefritis intersticial, síndrome de Stevens-Johnson.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Sulbactam.svg/500px-Sulbactam.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": ""
   },
   {
     "id": "catalog-015",
@@ -222,7 +222,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Diarrea, náuseas, vómitos, constipación, dolor abdominal, cefalea, insomnio, rash cutáneo, prurito, edema periférico, flebitis.",
     "adverseReactions": "Colitis pseudomembranosa, choque anafiláctico, insuficiencia renal aguda, trombocitopenia, agranulocitosis, convulsiones (en sobredosis o falla renal).",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Piptazo.jpg/500px-Piptazo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/RECALLED_%E2%80%93_Piperacillin_and_Tazobactam_for_Injection_%288692955231%29.jpg/500px-RECALLED_%E2%80%93_Piperacillin_and_Tazobactam_for_Injection_%288692955231%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-016",
@@ -237,7 +237,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Aumento del apetito, insomnio, irritabilidad, aumento de peso, retención hídrica, hiperglucemia transitoria, resequedad cutánea.",
     "adverseReactions": "Glaucoma, cataratas subcapsulares, insuficiencia corticosuprarrenal, osteoporosis, síndrome de Cushing iatrogénico, inmunosupresión grave con infecciones secundarias, úlcera péptica.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/Dexamethasone_structure.svg/500px-Dexamethasone_structure.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Dexamethasone_tablets.jpg/500px-Dexamethasone_tablets.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-017",
@@ -252,7 +252,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Acné, ardor, prurito, alteración de la pigmentación de la piel, insomnio, retención moderada de líquidos.",
     "adverseReactions": "Insuficiencia suprarrenal aguda tras suspensión brusca, alcalosis hipopotasémica, hipertensión severa, úlcera péptica perforada, osteoporosis, psicosis esteroidea.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/Cortisol3.svg/500px-Cortisol3.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Hydrocortisone_Cortef_10_mg_%D0%9A%D0%BE%D1%80%D1%82%D0%B5%D1%84_%D0%93%D0%B8%D0%B4%D1%80%D0%BE%D0%BA%D0%BE%D1%80%D1%82%D0%B8%D0%B7%D0%BE%D0%BD.jpg/500px-Hydrocortisone_Cortef_10_mg_%D0%9A%D0%BE%D1%80%D1%82%D0%B5%D1%84_%D0%93%D0%B8%D0%B4%D1%80%D0%BE%D0%BA%D0%BE%D1%80%D1%82%D0%B8%D0%B7%D0%BE%D0%BD.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-018",
@@ -267,7 +267,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Retención de sodio y líquidos, insomnio, cambios de humor, aumento de apetito, hiperglucemia, debilidad muscular leve.",
     "adverseReactions": "Insuficiencia cardíaca congestiva en pacientes predispuestos, arritmias cardíacas por hipopotasemia severa, hipertensión grave, úlcera péptica con perforación, síndrome de Cushing.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Methylprednisolone.svg/500px-Methylprednisolone.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Depo-Medrol_%28Methylprednisolone_Acetate_injectable_suspension%2C_USP%29.jpg/500px-Depo-Medrol_%28Methylprednisolone_Acetate_injectable_suspension%2C_USP%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-019",
@@ -282,7 +282,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Aumento del apetito, aumento de peso, irritabilidad, insomnio, resequedad en la piel, acné, cefalea.",
     "adverseReactions": "Glaucoma, cataratas, síndrome de Cushing, supresión del eje hipotálamo-hipófisis-adrenal, osteoporosis, miopatía esteroidea, mayor susceptibilidad a infecciones.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Prednisone.svg/500px-Prednisone.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/006035339lg_Prednisone_20_MG_Oral_Tablet.jpg/500px-006035339lg_Prednisone_20_MG_Oral_Tablet.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-020",
@@ -297,7 +297,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Manos y pies fríos, fatiga, mareos, astenia, bradicardia leve, trastornos del sueño, diarrea o estreñimiento.",
     "adverseReactions": "Bradicardia severa, bloqueo auriculoventricular (AV), hipotensión sintomática, broncoespasmo (en asmáticos), insuficiencia cardíaca descompensada, claudicación intermitente.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Metoprolol_ball-and-stick.png/500px-Metoprolol_ball-and-stick.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Metoprolol-ratiopharm.JPG/500px-Metoprolol-ratiopharm.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-021",
@@ -312,7 +312,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Extremidades frías, mareos, confusión, depresión, insomnio, dolor articular o de espalda, bradicardia leve.",
     "adverseReactions": "Broncoespasmo severo, bradicardia grave, paro cardíaco, bloqueo AV, hipotensión severa, descompensación de insuficiencia cardíaca, fenómeno de Raynaud.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Propranolol-from-1977-crystal-structure-3D-balls-side.png/500px-Propranolol-from-1977-crystal-structure-3D-balls-side.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Propranolol_tablets.png/500px-Propranolol_tablets.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-022",
@@ -327,7 +327,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Mareo, asteno-fatiga, dolor abdominal, dispepsia, diarrea, congestión nasal, tos leve (mucho menor que con IECAs).",
     "adverseReactions": "Hipotensión arterial severa, hiperpotasemia (hiperkalemia), angioedema (edema de cara/glotis), insuficiencia renal aguda, anafilaxia.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Losartan_structure.svg/500px-Losartan_structure.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Losartan_potassium1.jpg/500px-Losartan_potassium1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-023",
@@ -342,7 +342,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Cefalea pulsátil, enrojecimiento facial y cutáneo (rubor), sensación de calor, mareo, edema maleolar/periférico, palpitaciones.",
     "adverseReactions": "Hipotensión severa, taquicardia refleja, síncope, exacerbación de la angina de pecho, colapso cardiovascular, hiperplasia gingival.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Nifedipine_substance_photo.jpg/500px-Nifedipine_substance_photo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": ""
   },
   {
     "id": "catalog-024",
@@ -357,7 +357,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Náuseas, vómitos, sudoración, ansiedad, dolor abdominal, cefalea, espasmos musculares (desaparecen al reducir el goteo).",
     "adverseReactions": "Hipotensión severa o colapso hemodinámico, intoxicación por cianuro/tiocianato (acidosis metabólica, alteración del estado mental, coma), arritmias.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Sodium-nitroprusside-2D.png/500px-Sodium-nitroprusside-2D.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Sodium-nitroprusside-sample.jpg/500px-Sodium-nitroprusside-sample.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-025",
@@ -372,7 +372,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Deshidratación, desequilibrio hidroelectrolítico, mareo, cefalea, calambres musculares, sed, aumento del ácido úrico (hiperuricemia).",
     "adverseReactions": "Hipokalemia severa (causante de arritmias), hipotensión ortostática, ototoxicidad/sordera transitoria o permanente, tromboflebitis, alcalosis metabólica.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Furosemide.svg/500px-Furosemide.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Furosemide_%281%29.JPG/500px-Furosemide_%281%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-026",
@@ -387,7 +387,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Vértigo, cefalea, debilidad, anorexia, náuseas, vómitos, fotosensibilidad, erupciones cutáneas leves.",
     "adverseReactions": "Hipopotasemia severa, hiponatremia, hipercalcemia, alcalosis hipoclorémica, hiperglucemia, crisis gotosa por hiperuricemia, pancreatitis.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Hydrochlorothiazide.svg/500px-Hydrochlorothiazide.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/4/45/RECALLED_%E2%80%93_Hydrochlorothiazide_Tablets_25_mg_1000-count_bottle_%2819644568303%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
   },
   {
     "id": "catalog-027",
@@ -402,7 +402,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Somnolencia, cefalea, diarrea, calambres musculares, erupciones cutáneas, ginecomastia dolorosa en varones, irregularidades menstruales.",
     "adverseReactions": "Hiperpotasemia severa (causa de paro cardíaco), acidosis metabólica hiperclorémica, anafilaxia, insuficiencia renal aguda, agranulocitosis.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Spironolacton.svg/500px-Spironolacton.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Spironolactone_50_mg.jpg/500px-Spironolactone_50_mg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-028",
@@ -417,7 +417,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Cefalea, náuseas, vómitos, sed, sensación de expansibilidad torácica, deshidratación, mareos, visión borrosa.",
     "adverseReactions": "Sobrecarga de volumen intravascular, insuficiencia cardíaca congestiva, edema agudo de pulmón, insuficiencia renal aguda por nefrosis osmótica, desequilibrio electrolítico grave (hiper o hiponatremia).",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Mannitol-3D-balls.png/500px-Mannitol-3D-balls.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": ""
   },
   {
     "id": "catalog-029",
@@ -432,7 +432,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Náuseas, vómitos, anorexia, epigastralgia, mareos, insomnio, pesadillas, cambios de conducta, sequedad bucal.",
     "adverseReactions": "Discinesias graves (coreiformes/atetoideas), hipotensión ortostática severa, arritmias cardíacas, psicosis o episodios alucinatorios, depresión con ideación suicida, melanoma maligno.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Levodopa.svg/500px-Levodopa.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": ""
   },
   {
     "id": "catalog-030",
@@ -447,7 +447,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Insomnio, ansiedad, mareos, náuseas, boca seca, constipación, livedo reticularis (moteado cutáneo violáceo), edema periférico.",
     "adverseReactions": "Alucinaciones visuales o auditivas, confusión mental aguda, psicosis, retención urinaria aguda, insuficiencia cardíaca congestiva, neutropenia.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Amantadine_ball-and-stick_model.png/500px-Amantadine_ball-and-stick_model.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": ""
   },
   {
     "id": "catalog-031",
@@ -462,7 +462,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Sedación marcada, somnolencia, ataxia, vértigo, confusión, visión borrosa, diplopía, reacciones cutáneas leves.",
     "adverseReactions": "Depresión respiratoria grave, rigidez torácica ('tórax leñoso'), paro respiratorio, hipotensión severa, síndrome de Stevens-Johnson, dependencia física/síndrome de abstinencia.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/41/Phenobarbital2DACS.svg/500px-Phenobarbital2DACS.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": ""
   },
   {
     "id": "catalog-032",
@@ -477,7 +477,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Náuseas, sedación, temblor fino, nistagmo, incoordinación motora, letargia, mareos, hiperplasia gingival, hipertricosis.",
     "adverseReactions": "Arritmias cardíacas severas, bradicardia, colapso cardiovascular, depresión del SNC, agranulocitosis, síndrome de Stevens-Johnson, hepatotoxicidad, ataxia irreversible.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Phenytoin_structure.svg/500px-Phenytoin_structure.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": ""
   },
   {
     "id": "catalog-033",
@@ -492,7 +492,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Mareos, ataxia, somnolencia, letargia, diplopía, nistagmo, náuseas, vómitos, incoordinación motora, sequedad bucal.",
     "adverseReactions": "Aplasia medular, agranulocitosis, anemia aplásica, síndrome de Stevens-Johnson, necrolysis epidérmica tóxica, hepatotoxicidad, hiponatremia por SIADH.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Carbamazepine.svg/500px-Carbamazepine.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Polish_Neurotop_Retard_%28carbamazepine%29_tablets%2C_600_mg.jpg/500px-Polish_Neurotop_Retard_%28carbamazepine%29_tablets%2C_600_mg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-034",
@@ -507,7 +507,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Somnolencia, cefalea, náuseas, vómitos, hipo, tos, mareos, amnesia anterógrada, sedación residual.",
     "adverseReactions": "Depresión respiratoria grave, apnea, paro cardíaco, hipotensión arterial, reacción paradójica (agitación, hiperactividad), broncoespasmo.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Midazolam.svg/500px-Midazolam.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Midazolam.JPG/500px-Midazolam.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-035",
@@ -522,7 +522,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Somnolencia, sedación, fatiga, ataxia, vértigo, confusión, debilidad muscular, diarrea, vómito, cambios en la libido.",
     "adverseReactions": "Depresión respiratoria, apnea, paro cardiorrespiratorio, hipotensión severa, alucinaciones, reacción paradójica, dependencia física y psíquica.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Diazepam_structure.svg/500px-Diazepam_structure.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Diazepam_10mg.jpg/500px-Diazepam_10mg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-036",
@@ -537,7 +537,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Somnolencia, fatiga, ataxia, mareo, debilidad muscular, confusión, sequedad bucal, amnesia transitoria.",
     "adverseReactions": "Depresión respiratoria severa, insuficiencia respiratoria, hipotensión arterial, choque, coma, paro cardiorrespiratorio, anafilaxia.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Lorazepam.svg/500px-Lorazepam.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fd/Lorazepam_Orion.jpg/500px-Lorazepam_Orion.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-037",
@@ -552,7 +552,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Somnolencia, mareos, ataxia (dificultad en coordinación motora), cansancio, deterioro de funciones cognitivas, nerviosismo.",
     "adverseReactions": "Depresión respiratoria, alucinaciones, irritabilidad paradójica, excitación, fotosensibilidad, hipotensión, dependencia física grave.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Clonazepam_200.svg/500px-Clonazepam_200.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Clonazepam-1mg-teva.jpg/500px-Clonazepam-1mg-teva.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-038",
@@ -567,7 +567,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Náuseas, vómitos, malestar gastrointestinal, dolor abdominal, aumento del apetito, ganancia de peso, alopecia transitoria, temblor fino.",
     "adverseReactions": "Hepatotoxicidad grave (insuficiencia hepática fatal), pancreatitis aguda, trombocitopenia, hiperamonemia con encefalopatía, teratogenicidad.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Valproic_acid_chemical_structure.svg/500px-Valproic_acid_chemical_structure.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": ""
   },
   {
     "id": "catalog-039",
@@ -582,7 +582,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Náuseas, cefalea, insomnio, disfunción sexual, anorexia, diarrea, boca seca, nerviosismo, diaforesis.",
     "adverseReactions": "Síndrome serotoninérgico (agitación, hipertermia, mioclonías, inestabilidad autonómica), convulsiones, prolongación del intervalo QT, hiponatremia por SIADH, sangrado digestivo.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Fluoxetine.svg/500px-Fluoxetine.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Fluoxetine_drug_packages.jpg/500px-Fluoxetine_drug_packages.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-040",
@@ -597,7 +597,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Somnolencia intensa, mareos, boca seca, sabor metálico en la boca, náuseas, vómitos, fatiga, ataxia.",
     "adverseReactions": "Priapismo (requiere intervención quirúrgica inmediata si excede 4 horas), hipotensión ortostática severa, arritmias cardíacas, síndrome serotoninérgico, leucopenia.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Trazodone.svg/500px-Trazodone.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": ""
   },
   {
     "id": "catalog-041",
@@ -612,7 +612,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Temblor en reposo, rigidez en tubo de plomo, acatisia, somnolencia, sequedad de boca, estreñimiento, aumento de prolactina (galactorrea).",
     "adverseReactions": "Síndrome Neuroléptico Maligno (hipertermia, rigidez muscular severa, inestabilidad autonómica), distonía aguda, disquinesia tardía irreversible, arritmias ventriculares (Torsades de Pointes), paro cardíaco.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Haloperidol.svg/500px-Haloperidol.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/Haloperidol_%28Haldol%29.jpg/500px-Haloperidol_%28Haldol%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-042",
@@ -627,7 +627,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Náuseas, vómitos, dolor epigástrico, cefalea, insomnio, irritabilidad, temblor de manos, palpitaciones.",
     "adverseReactions": "Arritmias cardíacas graves (taquicardia ventricular, fibrilación), hipotensión severa, convulsiones tónico-clónicas, colapso cardiorrespiratorio.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Aminophylline.svg/500px-Aminophylline.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": ""
   },
   {
     "id": "catalog-043",
@@ -642,7 +642,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Estreñimiento frecuente, sedación, somnolencia, mareos, náuseas, vómitos, sequedad bucal.",
     "adverseReactions": "Depresión respiratoria grave, paro respiratorio, broncoespasmo, convulsiones (en sobredosis), hipotensión, reacción anafiláctica, dependencia.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Dihydrocodeine_skeletal.svg/500px-Dihydrocodeine_skeletal.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Package_Dihydrocodeine_Mundipharma_60_mg.JPG/500px-Package_Dihydrocodeine_Mundipharma_60_mg.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-044",
@@ -657,7 +657,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Náuseas, vómitos, estomatitis, diarrea, rinorrea, molestias gastrointestinales.",
     "adverseReactions": "Broncoespasmo (especialmente en asmáticos), reacciones anafilactoides (urticaria, angioedema, hipotensión, disnea en administración IV rápida), hipotensión.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Acetylcysteine2.svg/500px-Acetylcysteine2.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Acetylcysteine_IV_UA.JPG/500px-Acetylcysteine_IV_UA.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-045",
@@ -672,7 +672,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Taquicardia, palpitaciones, temblor fino de manos, nerviosismo, cefalea, mareos, calambres musculares, irritación orofaríngea.",
     "adverseReactions": "Taquiarrhythmias severas, isquemia miocárdica, broncoespasmo paradojal grave, hipopotasemia marcada, hipotensión arterial o hipertensión reactiva.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d5/RS-salbutamol-from-xtal-3D-balls.png/500px-RS-salbutamol-from-xtal-3D-balls.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Ventol%C3%ADn_%28Salbutamol%29.jpg/500px-Ventol%C3%ADn_%28Salbutamol%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-046",
@@ -687,7 +687,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Tos irritativa, sequedad de boca, irritación throat/local, cefalea, mareos, náuseas, trastornos de motilidad gastrointestinal.",
     "adverseReactions": "Glaucoma de ángulo agudo por contacto ocular, retención urinaria aguda (en hiperplasia prostática), angioedema de cara/lengua, fibrilación auricular, broncoespasmo paradojal.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Ipratropium_bromide.svg/500px-Ipratropium_bromide.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Ipratropium_Bromide_%281%29.JPG/500px-Ipratropium_Bromide_%281%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-047",
@@ -702,7 +702,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Constipación, distensión abdominal, anorexia, náuseas, vómitos, cefalea, mareos, boca seca, somnolencia, rash cutáneo.",
     "adverseReactions": "Íleo paralítico, megacolon tóxico, retención urinaria, reacciones de hipersensibilidad/anafilaxia, prolongación del QT (a dosis supraterapéuticas).",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Loperamide.svg/500px-Loperamide.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Loperamide2mg.JPG/500px-Loperamide2mg.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-048",
@@ -717,7 +717,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Cefalea, diarrea, estreñimiento, dolor abdominal, náuseas, vómitos, flatulencia, mareo, vértigo, rash cutáneo.",
     "adverseReactions": "Colitis pseudomembranosa por C. difficile, hipomagnesemia grave, nefritis intersticial aguda, lupus eritematoso cutáneo, aumento del riesgo de fracturas de cadera/columna.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Omeprazole.svg/500px-Omeprazole.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e0/Omeprazole_40mg_vial_white_background.jpg/500px-Omeprazole_40mg_vial_white_background.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-049",
@@ -732,7 +732,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Somnolencia, cansancio, lasitud, fatiga, insomnio, cefalea, confusión, náuseas, diarrea.",
     "adverseReactions": "Reacciones extrapiramidales agudas (distonía de cuello/cara, crisis oculogiras), discinesia tardía irreversible, Síndrome Neuroléptico Maligno, methemoglobinemia, bradicardia/paro cardíaco.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Metoclopramide_%28ball_and_stick_3D%29.png/500px-Metoclopramide_%28ball_and_stick_3D%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6f/Metoclopramide-5mg.jpg/500px-Metoclopramide-5mg.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-050",
@@ -747,7 +747,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Cefalea, sensación de bochorno/calor, constipación, elevación asintomática de enzimas hepáticas, fatiga.",
     "adverseReactions": "Prolongación del intervalo QT, Torsades de Pointes, arritmias cardíacas graves, choque anafiláctico, broncoespasmo, convulsiones.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Ondansetron_structure.svg/500px-Ondansetron_structure.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Ondansetron_%281%29.JPG/500px-Ondansetron_%281%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-051",
@@ -762,7 +762,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Hematoma y equimosis en la zona de inyección, dolor local, prurito, edema, anemia leve, cefalea.",
     "adverseReactions": "Hemorragia grave (digestiva, retroperitoneal, intracraneal), Trombocitopenia Inducida por Heparina (TIH), necrosis cutánea, choque hemorrágico, elevación de transaminasas.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Enoxaparin_sodium_ball-and-stick.png/500px-Enoxaparin_sodium_ball-and-stick.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Syringe_Enoxaparin_Becat%2C_6000_I.E.%2C_Rovi-5476.jpg/500px-Syringe_Enoxaparin_Becat%2C_6000_I.E.%2C_Rovi-5476.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-052",
@@ -777,7 +777,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Hematoma en zona de punción, equimosis, alopecia reversible tras uso prolongado, prurito, eritema.",
     "adverseReactions": "Hemorragia severa/masiva, Trombocitopenia Inducida por Heparina (TIH inmunológica con riesgo trombótico), osteoporosis (en uso mantenido), anafilaxia.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Heparin_General_Structure_V.1.svg/500px-Heparin_General_Structure_V.1.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Heparin_5000_IU-1ml_vial_white_background.jpg/500px-Heparin_5000_IU-1ml_vial_white_background.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-053",
@@ -792,7 +792,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Hemorragia leve (epistaxis, gingivorragia, equimosis), dolor abdominal, náuseas, diarrea, erupción cutánea.",
     "adverseReactions": "Hemorragia mayor/fatal (intracraneal, retroperitoneal), choque anémico, necrosis cutánea inducida por warfarina, síndrome de los dedos azules, teratogenicidad grave.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Warfarin.svg/500px-Warfarin.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": ""
   },
   {
     "id": "catalog-054",
@@ -807,7 +807,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Diarrea, náuseas, vómitos, flatulencia, malestar abdominal, anorexia, sabor metálico en la boca.",
     "adverseReactions": "Acidosis láctica (complicación rara pero potencialmente fatal), deficiencia grave de vitamina B12 con anemia megaloblástica, hepatotoxicidad reactiva.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Metformin.svg/500px-Metformin.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Metformin_500mg_Tablets.jpg/500px-Metformin_500mg_Tablets.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-055",
@@ -822,7 +822,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Dispepsia, epigastralgia, náuseas, microhemorragias gastrointestinales, irritación gástrica, prurito.",
     "adverseReactions": "Hemorragia digestiva alta, úlcera gástrica o duodenal perforada, hemorragia cerebral, broncoespasmo/asma inducido por aspirina, choque anafiláctico, tinnitus/ototoxicidad por sobredosis.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Acetylsalicylic_acid.jpg/500px-Acetylsalicylic_acid.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Regular_strength_enteric_coated_aspirin_tablets.jpg/500px-Regular_strength_enteric_coated_aspirin_tablets.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   },
   {
     "id": "catalog-056",
@@ -837,7 +837,7 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Somnolencia pronunciada, sequedad bucal, espesamiento de secreciones bronquiales, mareo, cefalea, estreñimiento.",
     "adverseReactions": "Prolongación del intervalo QT, Torsades de Pointes, retención urinaria aguda, convulsiones, temblores, choque anafiláctico.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Hydroxyzine.svg/500px-Hydroxyzine.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": ""
   },
   {
     "id": "catalog-057",
@@ -852,6 +852,6 @@ window.VADEMECUM_CATALOG = [
     "pediatricDose": "",
     "sideEffects": "Cefalea, somnolencia leve transitoria, fatiga, resequedad bucal, malestar o intolerancia gástrica.",
     "adverseReactions": "Reacciones de anafilaxia, angioedema, hepatotoxicidad, taquiarrhythmias (raras a dosis recomendadas), erupción cutánea grave.",
-    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Loratadine.svg/500px-Loratadine.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+    "photo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Fortune_NT-Alergi_tablet_%28contains_Loratadine_10mg%29.jpg/500px-Fortune_NT-Alergi_tablet_%28contains_Loratadine_10mg%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
   }
 ];
