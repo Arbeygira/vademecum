@@ -116,6 +116,8 @@ const FIELD_MAP = {
   updatedAt: "updated_at",
 };
 let remoteActive = false;
+let visibilityAvailable = false;
+let remoteLoadVersion = 0;
 const SESSION_KEY = "vademecum.session.v1";
 let session = null;
 let refreshPromise = null;
@@ -186,7 +188,7 @@ function updateAuthUi() {
 }
 
 function toRow(medicine) {
-  return Object.fromEntries(Object.entries(FIELD_MAP).map(([key, column]) => [
+  return Object.fromEntries(Object.entries(FIELD_MAP).filter(([key]) => key !== "visible" || visibilityAvailable).map(([key, column]) => [
     column,
     medicine[key] ?? (key === "updatedAt" ? new Date().toISOString() : key === "visible" ? true : ""),
   ]));
@@ -217,13 +219,27 @@ async function remoteRequest(path, options = {}, requireAuth = false) {
 }
 
 async function initRemote() {
+  const loadVersion = ++remoteLoadVersion;
+  remoteActive = false;
   try {
-    const rows = await remoteRequest("?select=*&order=generic_name.asc");
+    let rows;
+    let hasVisibility = true;
+    try {
+      rows = await remoteRequest("?select=*,visible&order=generic_name.asc");
+    } catch (error) {
+      if (!error.message.includes("column medicamentos.visible does not exist")) throw error;
+      console.warn("Falta la columna visible. Ejecuta supabase-auth.sql en Supabase.");
+      hasVisibility = false;
+      rows = await remoteRequest("?select=*&order=generic_name.asc");
+    }
     if (!Array.isArray(rows)) throw new Error("La base de datos no devolvió una lista de medicamentos.");
+    if (loadVersion !== remoteLoadVersion) return;
     medicines = rows.map(fromRow);
+    visibilityAvailable = hasVisibility;
     remoteActive = true;
     render();
   } catch (error) {
+    if (loadVersion !== remoteLoadVersion) return;
     console.error("No se pudo conectar con la base de datos:", error);
     showToast("Sin conexión a la base de datos. No se pueden guardar cambios; recarga para volver a intentar.", true);
   }
@@ -241,11 +257,13 @@ function escapeHtml(value = "") {
 
 function render() {
   const query = searchInput.value.trim().toLocaleLowerCase("es");
-  const selectedGroup = groupFilter.value;
   const editingMode = activeView === "edit";
   const availableMedicines = medicines.filter((medicine) =>
     medicine.visible !== false || (isAuthed() && editingMode),
   );
+  const groups = [...new Set(availableMedicines.map((medicine) => medicine.pharmacologicalGroup).filter(Boolean))]
+    .sort((left, right) => left.localeCompare(right, "es"));
+  const selectedGroup = groups.includes(groupFilter.value) ? groupFilter.value : "";
   const filtered = availableMedicines.filter((medicine) => {
     const searchable = [
       medicine.genericName, medicine.brandName,
@@ -257,16 +275,13 @@ function render() {
     return searchable.includes(query) && (!selectedGroup || medicine.pharmacologicalGroup === selectedGroup);
   });
 
-  const groups = [...new Set(availableMedicines.map((medicine) => medicine.pharmacologicalGroup).filter(Boolean))]
-    .sort((left, right) => left.localeCompare(right, "es"));
-  const currentGroup = groupFilter.value;
   document.querySelector("#group-options").innerHTML = groups
     .map((group) => `<option value="${escapeHtml(group)}"></option>`)
     .join("");
   groupFilter.innerHTML = '<option value="">Todos los grupos</option>' + groups
     .map((group) => `<option value="${escapeHtml(group)}">${escapeHtml(group)}</option>`)
     .join("");
-  groupFilter.value = groups.includes(currentGroup) ? currentGroup : "";
+  groupFilter.value = selectedGroup;
   document.querySelector("#result-count").textContent = `${filtered.length} ${filtered.length === 1 ? "ficha" : "fichas"}`;
   document.querySelector("#list-eyebrow").textContent = editingMode ? "Edición" : selectedGroup ? "Grupo farmacológico" : "Consulta";
   document.querySelector("#list-title").textContent = editingMode ? "Editar medicamentos" : selectedGroup || "Medicamentos";
@@ -350,7 +365,7 @@ function setView(view) {
     else button.removeAttribute("aria-current");
   }
   document.querySelector("#page-description").textContent = view === "edit"
-    ? "Selecciona un medicamento para consultar, editar o quitar su ficha."
+    ? "Selecciona un medicamento para consultar, editar, ocultar o quitar su ficha."
     : "Encuentra medicamentos por nombre o grupo farmacológico.";
   render();
 }
@@ -557,6 +572,10 @@ list.addEventListener("click", async (event) => {
       showToast("No hay conexión con la base de datos. Recarga la página y vuelve a intentarlo.", true);
       return;
     }
+    if (!visibilityAvailable) {
+      showToast("Para ocultar medicamentos, ejecuta supabase-auth.sql en el editor SQL de Supabase.", true);
+      return;
+    }
     const visible = medicine.visible === false;
     visibilityInProgress = true;
     button.disabled = true;
@@ -637,6 +656,7 @@ document.querySelector("#auth-button").addEventListener("click", () => {
     storeSession(null);
     if (dialog.open) dialog.close();
     updateAuthUi();
+    initRemote();
     showToast("Sesión cerrada.");
     return;
   }
@@ -656,6 +676,7 @@ loginForm.addEventListener("submit", async (event) => {
     }));
     loginDialog.close();
     updateAuthUi();
+    initRemote();
     showToast("Sesión iniciada.");
   } catch {
     loginError.textContent = "Correo o contraseña incorrectos.";
